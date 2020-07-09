@@ -1,0 +1,46 @@
+plugins {
+	id 'org.springframework.boot' version '2.0.3.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.personal'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+def SPRING_VERSION = '5.0.6.RELEASE'
+def SPRING_BOOT_VERSION = '2.0.3.RELEASE'
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-web:${SPRING_BOOT_VERSION}")
+    compile("org.projectlombok:lombok:1.18.0")
+    compile("org.apache.httpcomponents:httpclient:4.5.11")
+	compile("org.apache.httpcomponents:httpmime:4.5.11")
+    compile("io.kubernetes:client-java:8.0.0")
+    compile("io.kubernetes:client-java-api:8.0.0")
+    compile("org.springframework.data:spring-data-commons-core:1.4+")
+    compile("org.jsoup:jsoup:1.13.1")
+    compile("com.github.pemistahl:lingua:1.0.1")
+    
+    testCompile("org.mockito:mockito-core:2.23.+")
+    testCompile("org.springframework:spring-test:${SPRING_VERSION}")
+    testCompile("org.springframework.boot:spring-boot-starter-test:${SPRING_BOOT_VERSION}")
+    testCompile("org.springframework.boot:spring-boot-starter-web:${SPRING_BOOT_VERSION}")
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.2.0")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.2.0")
+    testRuntime("org.junit.vintage:junit-vintage-engine:4.12.2")
+}
+
+test {
+	useJUnitPlatform()
+}
